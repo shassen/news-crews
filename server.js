@@ -3,9 +3,9 @@ const path = require('path');
 const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
-const passport = require('passport');
-const session = require('express-session');
-const flash = require('connect-flash');
+// const passport = require('passport');
+// const session = require('express-session');
+// const flash = require('connect-flash');
 
 
 // Require routers and controllers here
@@ -24,10 +24,10 @@ app.use(express.static('public'));
 
 // Set the view engine, initialize ejs and join paths for alternative OS
 app.set('view engine', 'ejs');
-app(path.join(__dirname, 'views'));
+// app(path.join(__dirname, 'views'));
 
 // Configure passport 
-require('./config/passport');
+// require('./config/passport');
 
 // Initialize logger and env
 app.use(logger('dev'));
@@ -37,7 +37,7 @@ app.use(logger('dev'));
 
 
 // Initialize Flash
-app.use(flash());
+// app.use(flash());
 
 // Initialize body-parser
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -55,5 +55,5 @@ app.get('/', (req, res) => {
 
 // Set up listern on port provided or default 3000
 app.listen(PORT, () => {
-    console.log(`Server is up and listening on port ${PORT} in ${app.use('env')} mode`);
+    console.log(`Server is up and listening on port ${PORT} in ${app.get('env')} mode`);
 })
