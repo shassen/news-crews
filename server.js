@@ -1,8 +1,9 @@
 // Require necessary packages for project
-const path = require('path');
-const express = require('express');
-const logger = require('morgan');
+const path       = require('path');
+const express    = require('express');
+const logger     = require('morgan');
 const bodyParser = require('body-parser');
+require('dotenv').config();
 // const passport = require('passport');
 // const session = require('express-session');
 // const flash = require('connect-flash');
@@ -19,12 +20,13 @@ const PORT = process.env.PORT || 3000;
 // Initialize express
 const app = express();
 
-// Allow express to use static assets and style with css in public
-app.use(express.static('public'));
+
 
 // Set the view engine, initialize ejs and join paths for alternative OS
 app.set('view engine', 'ejs');
-// app(path.join(__dirname, 'views'));
+
+// Allow express to use static assets and style with css in public
+app.use(express.static('public'));
 
 // Configure passport 
 // require('./config/passport');
@@ -49,11 +51,11 @@ app.use(bodyParser.json());
 // Set up ROUTES here
 
 app.get('/', (req, res) => {
-    res.send('Testing server...');
-})
+  res.send('Testing server...');
+});
 
 
 // Set up listern on port provided or default 3000
 app.listen(PORT, () => {
-    console.log(`Server is up and listening on port ${PORT} in ${app.get('env')} mode`);
-})
+  console.log(`Server is up and listening on port ${PORT} in ${app.get('env')} mode`);
+});
