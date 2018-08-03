@@ -43,6 +43,14 @@ function usersOnly(req, res, next) {
   }
 }
 
+function getAll(req, res, next) {
+  userDB.findAll()
+    .then((user) => {
+      res.locals.users = user;
+    })
+    .catch(e => next(e));
+}
+
 module.exports = {
   renderLogin,
   handleLogin,
@@ -50,4 +58,5 @@ module.exports = {
   handleRegister,
   handleLogout,
   usersOnly,
+  getAll,
 };

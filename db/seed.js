@@ -1,37 +1,50 @@
 // Require models for project
 const user = require('../models/user');
 const group = require('../models/group');
+const article = require('../models/article');
 const comment = require('../models/comment');
-
 
 const userSeedData = [
   {
     username: 'shawn',
     password: 'password',
-    f_name: 'shawn',
-    l_name: 'hassen',
-    email: 'shassen89@gmail.com',
   },
   {
     username: 'test',
     password: 'test',
-    f_name: 'test',
-    l_name: 'tester',
-    email: 'test@test.com',
   },
   {
     username: 'user1',
     password: 'user1',
-    f_name: 'user1',
-    l_name: 'useruser1',
-    email: 'user1@test.com',
   },
 ];
 
 const groupSeedData = [
   {
-    group_name: 'test group',
+    name: 'test group',
     description: 'this is a group created for testing',
+  },
+  {
+    name: 'shawns group',
+    description: 'Tech news please',
+  },
+  {
+    name: 'user1 group',
+    description: 'User1\'s world news group',
+  },
+];
+
+const articleSeedData = [
+  {
+    source: 'test',
+    url: 'https://www.usatoday.com/story/news/nation-now/2018/08/03/nasa-first-astronauts-spacex-boeing-ships/896846002/',
+    urlimg: 'https://www.gannett-cdn.com/-mm-/84fa046072fc684226a657961ca7b138e72e3a87/c=0-53-1041-641/local/-/media/2018/08/03/Brevard/Brevard/636688945380427913-nasa-ccp-group-photo.jpg?width=3200&height=1680&fit=crop'
+  },
+];
+
+const commendSeedData = [
+  {
+    
   },
 ];
 
@@ -39,8 +52,16 @@ const groupSeedData = [
 async function seed() {
   // seed users
   const users = await Promise.all(userSeedData
-    .map(({ username, password, f_name, l_name, email }) => 
-      user.register(username, password, f_name, l_name, email)));
-    // seed groups
-  const groups = await Promise.all(groupSeedData.map(group.save));
+    .map(({ username, password }) => user.register(username, password)));
+  console.log(users);
+  // seed groups
+  const groupQueries = groupSeedData.map((g, index) => (
+    group.save({ ...g, created_by: users[index].id })));
+  const groups = await Promise.all(groupQueries);
+  console.log(groups);
+  // seed 
 }
+seed();
+
+// seed groups
+// const groups = await Promise.all(groupSeedData.map(group.save));

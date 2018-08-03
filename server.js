@@ -10,8 +10,10 @@ require('dotenv').config();
 
 
 // Require routers and controllers here
-
-
+const authRouter = require('./routes/auth');
+const groupRouter = require('./routes/group');
+const commentRouter = require('./routes/comments');
+const articleRouter = require('./routes/articles');
 
 
 // Create PORT variable to check for env or 3000 as default
@@ -49,6 +51,11 @@ app.use(bodyParser.json());
 
 
 // Set up ROUTES here
+app.use('/auth', authRouter);
+app.use('/groups', groupRouter);
+app.use('/comments', commentRouter);
+app.use('/articles/', articleRouter);
+
 
 app.get('/', (req, res) => {
   res.send('Testing server...');

@@ -1,14 +1,14 @@
 const fetch = require('node-fetch');
-const axios = require('axios');
+require('dotenv').config();
 const apiKey = process.env.NEWS_API_KEY;
 
 function test() {
-  return fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=eca1e2899a2b41f48bee1f59b9c33aa5')
-    .then((resp) => {
-      if (!resp.ok) {
-        throw Error(resp.statusText);
+  return fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`)
+    .then((res) => {
+      if (!res.ok) {
+        throw Error(res.statusText);
       }
-      return resp.json();
+      return res.json();
     })
     .then((data) => {
       console.log(data);
@@ -17,5 +17,4 @@ function test() {
       console.log(e.message);
     });
 }
-
 test();

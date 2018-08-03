@@ -14,10 +14,18 @@ function findById(id) {
         WHERE id = $1`, id);
 }
 
+function findByGroupName(name) {
+  return db.many(`
+        SELECT *
+        FROM groups
+        WHERE name
+        LIKE "%$/name/%"`, name);
+}
+
 function save(group) {
   return db.one(`
-        INSERT INTO groups (group_name, description)
-        VALUES ($/group_name/, $/description/)
+        INSERT INTO groups (name, description, created_by)
+        VALUES ($/name/, $/description/, $/created_by/)
         RETURNING *`, group);
 }
 
@@ -30,6 +38,7 @@ function destroy(id) {
 module.exports = {
   findAll,
   findById,
+  findByGroupName,
   save,
   destroy,
 };

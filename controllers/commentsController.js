@@ -39,4 +39,12 @@ module.exports = {
       .catch(e => next(e));
   },
 
+  showNewForm(req, res, next) {
+    
+  },
+
+  showEditForm(req, res, next) {
+
+  },
+
 }
