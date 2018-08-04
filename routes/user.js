@@ -1,0 +1,37 @@
+const express = require('express');
+
+// const authController = require('../controllers/authController');
+const userController = require('../controllers/userController');
+const groupController = require('../controllers/groupController');
+const viewController = require('../controllers/resHandler');
+
+const userRouter = express.Router();
+
+const showJSON = (req, res) => {
+  res.json(res.locals.user);
+};
+
+
+const handle404 = (err, req, res, next) => {
+  console.error(err);
+  res.sendStatus(404);
+};
+
+const send400 = (err, req, res, next) => {
+  console.error(err);
+  res.sendStatus(400);
+};
+
+userRouter.route('/:id')
+  .get(userController.showEditForm)
+  .put(userController.update);
+
+userRouter.route('/')
+  .post(groupController.index, showJSON)
+  .get(userController.index, showJSON);
+
+userRouter.use(handle404);
+// userRouter.use(send400);
+
+module.exports = userRouter;
+// viewController.index, viewController.showAll

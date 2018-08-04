@@ -34,17 +34,11 @@ const groupSeedData = [
   },
 ];
 
-const articleSeedData = [
-  {
-    source: 'test',
-    url: 'https://www.usatoday.com/story/news/nation-now/2018/08/03/nasa-first-astronauts-spacex-boeing-ships/896846002/',
-    urlimg: 'https://www.gannett-cdn.com/-mm-/84fa046072fc684226a657961ca7b138e72e3a87/c=0-53-1041-641/local/-/media/2018/08/03/Brevard/Brevard/636688945380427913-nasa-ccp-group-photo.jpg?width=3200&height=1680&fit=crop'
-  },
-];
 
-const commendSeedData = [
+const commentSeedData = [
   {
-    
+    content: 'This article is fantastic!',
+    url: 'https://www.usatoday.com/story/news/nation-now/2018/08/03/nasa-first-astronauts-spacex-boeing-ships/896846002/',
   },
 ];
 
@@ -56,12 +50,22 @@ async function seed() {
   console.log(users);
   // seed groups
   const groupQueries = groupSeedData.map((g, index) => (
-    group.save({ ...g, created_by: users[index].id })));
+    group.create({ ...g, created_by: users[index].username })));
   const groups = await Promise.all(groupQueries);
   console.log(groups);
-  // seed 
+  // seed comment
+  const comments = await Promise.all(commentSeedData.map(comment.save));
+  console.log(comments);
 }
 seed();
 
 // seed groups
 // const groups = await Promise.all(groupSeedData.map(group.save));
+
+// const articleSeedData = [
+//   {
+//     source: 'USA Today',
+//     url: 'https://www.usatoday.com/story/news/nation-now/2018/08/03/nasa-first-astronauts-spacex-boeing-ships/896846002/',
+//     urlimg: 'https://www.gannett-cdn.com/-mm-/84fa046072fc684226a657961ca7b138e72e3a87/c=0-53-1041-641/local/-/media/2018/08/03/Brevard/Brevard/636688945380427913-nasa-ccp-group-photo.jpg?width=3200&height=1680&fit=crop'
+//   },
+// ];

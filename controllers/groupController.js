@@ -14,32 +14,48 @@ module.exports = {
   index(req, res, next) {
     db.findAll()
       .then((group) => {
-        res.local.groups = group;
+        res.locals.group = group;
         next();
       })
       .catch(e => next(e));
   },
 
   getOne(req, res, next) {
-    const groupName = req.body
+    const groupName = req.body;
     db.findByGroupName(groupName)
       .then((group) => {
-        res.locals.groups = group
+        res.locals.group = group;
         next();
       })
       .catch(e => next(e));
-  }
-
-  create(req, res, next) {
-    
   },
 
-  update(req, res, next) {
+  // create(req, res, next) {
     
+  // },
+
+  update(req, res, next) {
+    const { name, description } = req.body;
+
+    const modifiedGroup = {
+      id: req.params.id,
+      name,
+      description
+    };
+    db.update(modifiedGroup)
+      .then((group) => {
+        res.locals.group = group;
+        next();
+      })
+      .catch(e => next(e));
   },
 
   destroy(req, res, next) {
-    
+    db.destroy(req.params.id)
+      .then(() => {
+        next();
+      })
+      .catch(e => next(e));
   },
 
   showNewForm(req, res, next) {

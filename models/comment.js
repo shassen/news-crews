@@ -16,8 +16,8 @@ function findById(id) {
 
 function save(comment) {
   return db.one(`
-        INSERT INTO comments (author, content)
-        VALUES ($/author/, $/content/)
+        INSERT INTO comments (content, url)
+        VALUES ($/content/, $/url/)
         RETURNING *`, comment);
 }
 

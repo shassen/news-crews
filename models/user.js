@@ -36,6 +36,13 @@ function findByUsername(username) {
     `, username);
 }
 
+function update(name) {
+  return db.one(`
+    UPDATE users
+    SET username = $/username/
+    WHERE id = $/id/`, name);
+}
+
 async function login(username, password) {
   try {
     const user = await findByUsername(username);
@@ -51,7 +58,7 @@ async function login(username, password) {
 }
 
 function destroy(id) {
-  return db.one(`
+  return db.none(`
         DELETE FROM users
         WHERE id = $1`, id);
 }
@@ -61,6 +68,7 @@ module.exports = {
   findAll,
   findById,
   findByUsername,
+  update,
   login,
   destroy,
 };
