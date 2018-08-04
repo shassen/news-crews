@@ -39,7 +39,8 @@ CREATE TABLE comments (
 
 CREATE TABLE user_group (
     user_id INTEGER REFERENCES users (id) ON DELETE CASCADE,
-    group_id INTEGER REFERENCES groups (id) ON DELETE CASCADE
+    group_id INTEGER REFERENCES groups (id) ON DELETE CASCADE,
+    PRIMARY KEY(user_id, group_id)
 );
 
 -- CREATE TABLE group_article (

@@ -6,6 +6,8 @@ const viewController = require('../controllers/resHandler');
 
 const commentRouter = express.Router();
 
+commentRouter.use(authController.usersOnly);
+
 const showJSON = (req, res) => {
   res.json(res.locals.comments);
 };

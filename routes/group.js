@@ -2,10 +2,13 @@ const express = require('express');
 
 // const authController = require('../controllers/authController');
 const groupController = require('../controllers/groupController');
+const authController = require('../controllers/authController');
 const userController = require('../controllers/userController');
 const viewController = require('../controllers/resHandler');
 
 const groupRouter = express.Router();
+
+groupRouter.use(authController.usersOnly);
 
 const showJSON = (req, res) => {
   res.json(res.locals.group);
