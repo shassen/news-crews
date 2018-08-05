@@ -7,17 +7,17 @@ function findAll() {
         FROM comments`);
 }
 
-function findById(id) {
-  return db.one(`
+function findByName(name) {
+  return db.many(`
         SELECT *
         FROM comments
-        WHERE id = $1`, id);
+        WHERE author = $1`, name);
 }
 
 function save(comment) {
   return db.one(`
-        INSERT INTO comments (content, url)
-        VALUES ($/content/, $/url/)
+        INSERT INTO comments (author, content, url)
+        VALUES ($/author/, $/content/, $/url/)
         RETURNING *`, comment);
 }
 
@@ -29,7 +29,7 @@ function destroy(id) {
 
 module.exports = {
   findAll,
-  findById,
+  findByName,
   save,
   destroy,
 };

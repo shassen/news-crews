@@ -28,6 +28,7 @@ const app = express();
 
 // Set the view engine, initialize ejs and join paths for alternative OS
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 // Allow express to use static assets and style with css in public
 app.use(express.static('public'));
@@ -56,21 +57,28 @@ app.use(methodOverride('_method'));
 
 // TESTING LOGIN HACK HERE
 app.use(passport.initialize());
+app.use(passport.session());
+// const userDB = require('./models/user');
+// app.use((req, res, next) => {
+//   userDB.findByUsername(req.user.username)
+// })
 
 // Set up ROUTES here
 
-app.use('/newscrews', userRouter);
-app.use('/auth', authRouter);
+// app.use('/auth', authRouter);
+// app.use('/newscrews', userRouter);
 // app.use('/groups', groupRouter);
-// app.use('/comments', commentRouter);
+app.use('/comments', commentRouter);
 
 
-app.get('/', (req, res) => {
-  res.send('Testing server...');
-});
+// app.get('/', (req, res) => {
+//   res.send('Testing server...');
+// });
 
 
 // Set up listern on port provided or default 3000
 app.listen(PORT, () => {
   console.log(`Server is up and listening on port ${PORT} in ${app.get('env')} mode`);
 });
+
+module.exports = app;

@@ -6,7 +6,7 @@ const viewController = require('../controllers/resHandler');
 
 const commentRouter = express.Router();
 
-commentRouter.use(authController.usersOnly);
+// commentRouter.use(authController.usersOnly);
 
 const showJSON = (req, res) => {
   res.json(res.locals.comments);
@@ -29,7 +29,7 @@ commentRouter.get('/new', (req, res) => {
 });
 
 commentRouter.route('/:id')
-  // .get(commentController.getOne, showJSON)
+  .get(commentController.getOne, viewController.showComments)
   // .put(commentController.update, showJSON)
   .delete(commentController.destroy, (req, res) => {
     res.sendStatus(200);
@@ -37,9 +37,9 @@ commentRouter.route('/:id')
 
 commentRouter.route('/')
   .post(commentController.create, showJSON)
-  .get(commentController.index, showJSON);
+  .get(commentController.index, viewController.showComments, viewController.show404);
 
 commentRouter.use(handle404);
 
 module.exports = commentRouter;
-// , viewController.index
+// , viewController.index, viewController.showAll

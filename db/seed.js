@@ -54,7 +54,9 @@ async function seed() {
   const groups = await Promise.all(groupQueries);
   console.log(groups);
   // seed comment
-  const comments = await Promise.all(commentSeedData.map(comment.save));
+  const commentQueries = commentSeedData.map((c, index) => (
+    comment.save({ author: 'shawn', ...c })));
+  const comments = await Promise.all(commentQueries);
   console.log(comments);
 }
 seed();

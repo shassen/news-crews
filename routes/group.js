@@ -8,7 +8,7 @@ const viewController = require('../controllers/resHandler');
 
 const groupRouter = express.Router();
 
-groupRouter.use(authController.usersOnly);
+// groupRouter.use(authController.usersOnly);
 
 const showJSON = (req, res) => {
   res.json(res.locals.group);

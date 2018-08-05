@@ -15,16 +15,27 @@ module.exports = {
     db.findAll()
       .then((comments) => {
         res.locals.comments = comments;
+        console.log(res.locals.comments);
+        next();
+      })
+      .catch(e => next(e));
+  },
+
+  getOne(req, res, next) {
+    db.findById(req.params.id)
+      .then((comment) => {
+        res.locals.comments = comment;
         next();
       })
       .catch(e => next(e));
   },
 
   create(req, res, next) {
-    const { content, author } = req.body;
-    db.save({ content, author })
+    const { author } = req.params.id;
+    const { content, url } = req.body;
+    db.save({ author, content, url })
       .then((newComment) => {
-        res.locals.comment = newComment;
+        res.locals.comments = newComment;
         next();
       })
       .catch(e => next(e));

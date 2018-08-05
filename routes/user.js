@@ -3,6 +3,7 @@ const express = require('express');
 // const authController = require('../controllers/authController');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
+const commentController = require('../controllers/commentsController');
 const groupController = require('../controllers/groupController');
 const viewController = require('../controllers/resHandler');
 
@@ -30,7 +31,7 @@ userRouter.route('/:id')
   .put(userController.update);
 
 userRouter.route('/')
-  .post(groupController.index, showJSON)
+  .post(userController.index, showJSON)
   .get(userController.index, showJSON);
 
 userRouter.use(handle404);
