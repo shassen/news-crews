@@ -31,3 +31,8 @@ This is a very rough sketch but I will be using Bulma to style this project. Mor
 
 ![img_20180801_134624](https://media.git.generalassemb.ly/user/14895/files/5d13bdd2-9593-11e8-9599-a0d3344ec694)
 
+## Flowchart:
+
+![screen shot 2018-08-03 at 9 57 04 am](https://user-images.githubusercontent.com/34017019/43646710-a266a806-9703-11e8-8f31-35e723162023.png)
+
+
