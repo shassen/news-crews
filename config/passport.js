@@ -1,7 +1,7 @@
 
-const passport = require('passport');
+const passport      = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const userDB = require('../models/user');
+const userDB        = require('../models/user');
 
 // All methods below are referenced from John Master's Auth lecture. Thanks John!
 passport.use(new LocalStrategy((username, password, done) => (

@@ -14,15 +14,3 @@ Success!
 5. express(static(public)) - Is this essentially saying use the html templates and style them with css and retain those properties when consolidating into partials?
 No, it's sending those files in public out as flat resources
 Its making sure the file isn't altered or changed to another format.
-
-6. 
-
-<!-- <div>
-    <h2>Comments:</h2>
-        <% comment.forEach((c) => { %>
-        <h2>Posted by: <%= c.author %></h2>
-        <p><%= c.content %></p>
-        <a href="<%= c.url %>"><%= c.url %></a>
-        <% }) %>
-  </div>
-  <br /> -->

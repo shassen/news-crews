@@ -10,10 +10,10 @@ const session        = require('express-session');
 const flash          = require('connect-flash');
 
 // Require routers and controllers here
-const authRouter    = require('./routes/auth');
-const groupRouter   = require('./routes/group');
-const commentRouter = require('./routes/comments');
-const userRouter    = require('./routes/user');
+const authRouter     = require('./routes/auth');
+const groupRouter    = require('./routes/group');
+const commentRouter  = require('./routes/comments');
+const userRouter     = require('./routes/user');
 
 // Create PORT variable to check for env or 3000 as default
 const PORT = process.env.PORT || 3000;
@@ -52,15 +52,6 @@ app.use(methodOverride('_method'));
 // Initialize passport to allow user logins and remember session.
 app.use(passport.initialize());
 app.use(passport.session());
-
-// TESTING LOGIN HACK HERE
-// const userDB = require('./models/user');
-// app.use((req, res, next) => {
-//   userDB.findByUsername()
-//     .then((user) => {
-//       req.login(user, () => next());
-//     });
-// });
 
 // Newscrews routes.
 app.use('/auth', authRouter);

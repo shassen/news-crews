@@ -1,8 +1,8 @@
-const express = require('express');
+const express           = require('express');
 
-const authController = require('../controllers/authController');
+const authController    = require('../controllers/authController');
 const commentController = require('../controllers/commentsController');
-const viewController = require('../controllers/resHandler');
+const viewController    = require('../controllers/resHandler');
 
 // Initiate express router.
 const commentRouter = express.Router();

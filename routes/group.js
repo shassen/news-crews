@@ -1,11 +1,11 @@
-const express = require('express');
+const express           = require('express');
 
 // const authController = require('../controllers/authController');
-const groupController = require('../controllers/groupController');
-const authController = require('../controllers/authController');
-const userController = require('../controllers/userController');
+const groupController   = require('../controllers/groupController');
+const authController    = require('../controllers/authController');
+const userController    = require('../controllers/userController');
 const commentController = require('../controllers/commentsController');
-const viewController = require('../controllers/resHandler');
+const viewController    = require('../controllers/resHandler');
 
 // Initiate express router.
 const groupRouter = express.Router();

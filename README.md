@@ -7,6 +7,20 @@ Here at News Crews, we want to make news more social. How you might ask? Once yo
 
 Have fun, start reading and never stop discussing!
 
+## Using The App:
+
+Newscrews requires all users to create an account using passport. Upon your first visit to the website, navigate to localhost:3000/newscrews and you will be redirected to an authorization page. You can either login (assuming you have already registerd) or click the register link below the UN & PW field. Once you are a registered user, you will be redirected to the main group page.
+
+On the groups page, you can create, update, delete and navigate into groups that sound interesting to you by clicking on the groups name.
+
+Withing the group, you can post a comment with a url to share and read news articles. The comment post is currently a WIP and is not functioning at this time.
+
+Thats it!
+
+If you wish to stick around and look through some of the early planning for this app, see the images and details below regarding db structure, user stories, wireframes, etc.
+
+Thanks for visiting and feel free to help or provide feedback if you feel so inclined.
+
 ## User Stories Idea 2 (social news app):
 - As a user of ... I want to read news articles online
 - As a user of ... I want to stay in-touch with friends through the discussion of current events

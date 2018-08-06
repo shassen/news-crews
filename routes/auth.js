@@ -1,7 +1,8 @@
 
-const express = require('express');
+const express        = require('express');
 const authController = require('../controllers/authController');
-const authRouter = express.Router();
+
+const authRouter     = express.Router();
 
 // Routes below are referenced from John Master's Auth Lecture. Thanks John!
 // Login route handles user logins. Generates error is PW or UN is incorrect.

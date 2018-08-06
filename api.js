@@ -1,3 +1,6 @@
+// Fetch req initially created to pull news articles for project.
+// Considering time constraints, this function wasn't implemented.
+
 const fetch = require('node-fetch');
 require('dotenv').config();
 const apiKey = process.env.NEWS_API_KEY;

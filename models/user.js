@@ -1,6 +1,6 @@
 // Require connection to database
 const bcrypt = require('bcryptjs');
-const db = require('../config/connection');
+const db     = require('../config/connection');
 
 // Create SQL queries to display and manipulate data in app
 // Register function is from John Master's Auth lesson. Thank you John!

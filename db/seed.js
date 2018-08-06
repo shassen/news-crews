@@ -1,7 +1,6 @@
 // Require models for project
-const user = require('../models/user');
-const group = require('../models/group');
-const article = require('../models/article');
+const user    = require('../models/user');
+const group   = require('../models/group');
 const comment = require('../models/comment');
 
 const userSeedData = [
@@ -48,16 +47,13 @@ async function seed() {
   // seed users
   const users = await Promise.all(userSeedData
     .map(({ username, password }) => user.register(username, password)));
-  console.log(users);
   // seed groups
   const groupQueries = groupSeedData.map((g, index) => (
     group.create({ ...g, created_by: users[index].username })));
   const groups = await Promise.all(groupQueries);
-  console.log(groups);
   // seed comment
   const commentQueries = commentSeedData.map((c, index) => (
     comment.save({ author: 'shawn', ...c, group_id: 1 })));
   const comments = await Promise.all(commentQueries);
-  console.log(comments);
 }
 seed();

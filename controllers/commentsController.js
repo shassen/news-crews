@@ -11,7 +11,7 @@ module.exports = {
       })
       .catch(e => next(e));
   },
-  
+
   // Middleware function to retrieve all comments from db.
   index(req, res, next) {
     db.findAll()

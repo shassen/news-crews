@@ -3,7 +3,7 @@ const db = require('../models/user');
 
 
 module.exports = {
-
+  // Middleware function to retrieve all user from the db.
   index(req, res, next) {
     db.findAll()
       .then((user) => {
@@ -13,6 +13,7 @@ module.exports = {
       .catch(e => next(e));
   },
 
+  // Middleware function to retrieve one user from the db by param id.
   getOne(req, res, next) {
     db.findById(req.params.id)
       .then((user) => {
