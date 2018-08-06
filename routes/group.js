@@ -15,7 +15,9 @@ groupRouter.use(authController.usersOnly);
 
 // groups/:id route displays group, all comments from group and new comment form.
 groupRouter.route('/:id')
-  .get(groupController.getOne, viewController.showComments, viewController.showCommForm, viewController.handleComCreate);
+  .get(groupController.getOne, viewController.showComments,
+    viewController.showCommForm, viewController.handleComCreate)
+  .post(commentController.createNewComment, viewController.handleComCreate);
 
 // groups route shows all groups, creates, updates and deletes groups if you are a user.
 groupRouter.route('/')

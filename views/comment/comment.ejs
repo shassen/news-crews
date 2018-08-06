@@ -6,15 +6,12 @@
 <div>
   <h2>Comments:</h2>
       <% group.forEach((c) => { %>
-      <h2>Posted by: <%= c.author %></h2>
+      <h4>Posted by: <%= c.author %></h4>
       <p><%= c.content %></p>
       <a href="<%= c.url %>"><%= c.url %></a>
       <% }) %>
 </div>
 <br />
-
-
-<%- include('../partials/foot') %>
 
 
 

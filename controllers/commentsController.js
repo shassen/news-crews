@@ -35,11 +35,11 @@ module.exports = {
 
   // Middleware function to create a new comment. Wasn't able to get this far in project.
   create(req, res, next) {
-    const { author } = req.params.id;
-    const { content, url } = req.body;
-    db.save({ author, content, url })
-      .then((newComment) => {
-        res.locals.comments = newComment;
+    const { groupId } = req.params.id;
+    const { author, content, url } = req.body;
+    db.save({ author, content, url, group_id: groupId })
+      .then((comment) => {
+        res.locals.comments = comment;
         next();
       })
       .catch(e => next(e));

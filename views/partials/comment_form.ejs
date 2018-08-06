@@ -1,12 +1,13 @@
 <div>
     <form
         method="POST"
-        action="/comments"
+        action="/groups/<%= group.id %>"
         id="commentform">
         
-        <textarea placeholder="create comment here" row="4" cols="30" form="commentform" name="content"></textarea><br />
-        <label for="url">Url:</label>
-        <input type="text" name="url" id="url">
+        <textarea placeholder="create comment here" row="4" cols="57" form="commentform" name="content"></textarea><br />
+        <input type="text" name="author" id="author" placeholder="username here">
+        <input type="text" name="url" id="url" placeholder="url here">
+        <button type="submit">Post Comment</button>
     
     </form>
 </div>

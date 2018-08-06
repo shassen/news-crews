@@ -23,7 +23,7 @@ commentRouter.get('/new', (req, res) => {
 
 // Route to see all comments and post new comments.
 commentRouter.route('/')
-  .post(commentController.create, showJSON)
+  .post(commentController.create, viewController.handleComCreate, viewController.showGroups)
   .get(commentController.index, viewController.showComments, viewController.show404);
 
 

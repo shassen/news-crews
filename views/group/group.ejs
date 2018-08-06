@@ -7,7 +7,9 @@ create, update and delete groups. -->
   <h2>Groups:</h2>
     <ul>
       <% group.forEach((g) => { %>
-      <a href="/groups/<%= g.id %>"><li>Group #: <%= g.id %> : <%= g.name %> : <%= g.description %></li></a>
+      <a href="/groups/<%= g.id %>"><h3><%= g.name %></h3></a>
+      <p><%= g.description %></p>
+      <p>Group #: <%= g.id %></p>
       <% }) %>
    </ul>
 </div>
