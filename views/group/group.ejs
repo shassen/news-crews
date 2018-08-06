@@ -1,0 +1,57 @@
+<%- include('../partials/header') %>
+
+<div>
+  <h2>Groups:</h2>
+    <ul>
+      <% group.forEach((g) => { %>
+      <a href="/group/<%= g.id %>"><li>Group #: <%= g.id %> : <%= g.name %> : <%= g.description %></li></a>
+      <% }) %>
+   </ul>
+</div>
+
+<form 
+method = "POST"
+action = "/groups">
+  
+  <label for="name">Group</label>
+  <input type = "text" name = "name" id = "name">
+  
+  <label for="description">Description</label>
+  <input type = "text" name = "description" id = "description">
+
+  <label for="created_by">Creator</label>
+  <input type = "text" name = "created_by" id = "created_by">
+  
+  <input type="submit" value = "Create a group!">
+
+</form>
+<br />
+
+<form
+  method="POST"
+  action="/groups?_method=DELETE">
+  <select name="name">
+      <% group.forEach((g) => { %>
+        <option><%= g.name %></option>
+      <% }) %>
+  </select>
+  <button type="submit">Delete Group</button>
+</form>
+<br />
+
+<form
+  method="POST"
+  action="/groups?_method=PUT">
+  <div>
+  <label for="name">Name: </label>
+  <input value="<%= group.name %>" type="text" name="name" id="name"><br />
+  <label for="description">Description: </label>
+  <input value="<%= group.description %>" type="text" name="description" id="description"><br />
+  <label for="id">Group Id: </label>
+  <input value="<%= group.id %>" type="number" name="id" id="id">
+  </div>
+
+  <button type="submit">Update Group</button>
+</form>
+
+<%- include('../partials/foot') %>

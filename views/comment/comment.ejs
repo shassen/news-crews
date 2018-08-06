@@ -1,0 +1,32 @@
+
+<%- include('../partials/header') %>
+
+<div>
+  <h2>Comments:</h2>
+      <% comment.forEach((c) => { %>
+      <h2>Posted by: <%= c.author %></h2>
+      <p><%= c.content %></p>
+      <a><%= c.url %></a>
+      <% }) %>
+</div>
+<br />
+
+<div>
+<form
+  method="POST"
+  action="/comments">
+  
+  <textarea placeholder="create comment here" row="4" cols="30" ></textarea>
+
+
+
+
+</form>
+</div>
+
+
+
+<%- include('../partials/foot') %>
+
+
+
