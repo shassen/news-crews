@@ -4,44 +4,24 @@ const express = require('express');
 const groupController = require('../controllers/groupController');
 const authController = require('../controllers/authController');
 const userController = require('../controllers/userController');
+const commentController = require('../controllers/commentsController');
 const viewController = require('../controllers/resHandler');
 
+// Initiate express router.
 const groupRouter = express.Router();
 
+// Users only function
 groupRouter.use(authController.usersOnly);
 
-// const showJSON = (req, res) => {
-//   res.json(res.locals.group);
-// };
-
-// const handle404 = (err, req, res, next) => {
-//   console.error(err);
-//   res.sendStatus(404);
-// };
-
-// const send400 = (err, req, res, next) => {
-//   console.error(err);
-//   res.sendStatus(400);
-// };
-
-
-// groupRouter.get('/newscrews/group/:id/edit');
-// groupRouter.get('/new', viewController.showAddForm, viewController.show404);
-
+// groups/:id route displays group, all comments from group and new comment form.
 groupRouter.route('/:id')
-  .get(groupController.getOne, viewController.showGroups);
-  // .put(groupController.update)
-  // .delete(viewController.handleDelete, groupController.destroy);
+  .get(groupController.getOne, viewController.showComments, viewController.showCommForm, viewController.handleComCreate);
 
+// groups route shows all groups, creates, updates and deletes groups if you are a user.
 groupRouter.route('/')
   .post(groupController.createNewGroup, viewController.showGroups, viewController.show404)
   .delete(groupController.destroy, viewController.handleGroupDelete)
   .put(groupController.update, viewController.handleGroupUpdate)
   .get(groupController.index, viewController.showGroups, viewController.showAddGroupForm);
 
-// groupRouter.use(handle404);
-
-
 module.exports = groupRouter;
-// groupController.destroy, (req, res) => {
-//   res.sendStatus(200);groupController.getGroup, 

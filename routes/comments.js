@@ -4,42 +4,27 @@ const authController = require('../controllers/authController');
 const commentController = require('../controllers/commentsController');
 const viewController = require('../controllers/resHandler');
 
+// Initiate express router.
 const commentRouter = express.Router();
 
-// commentRouter.use(authController.usersOnly);
+// Users only function.
+commentRouter.use(authController.usersOnly);
 
+// Middleware function to show object as JSON.
 const showJSON = (req, res) => {
   res.json(res.locals.comments);
 };
 
-const handle404 = (err, req, res, next) => {
-  console.error(err);
-  res.sendStatus(404);
-};
-
-const send400 = (err, req, res, next) => {
-  console.error(err);
-  res.sendStatus(400);
-};
-
-
+// Route to edit and create comments.
 commentRouter.get('/:id/edit');
 commentRouter.get('/new', (req, res) => {
   res.render('comments/create');
 });
 
-commentRouter.route('/:id')
-  .get(commentController.getOne, viewController.showComments)
-  // .put(commentController.update, showJSON)
-  .delete(commentController.destroy, (req, res) => {
-    res.sendStatus(200);
-  });
-
+// Route to see all comments and post new comments.
 commentRouter.route('/')
   .post(commentController.create, showJSON)
   .get(commentController.index, viewController.showComments, viewController.show404);
 
-commentRouter.use(handle404);
 
 module.exports = commentRouter;
-// , viewController.index, viewController.showAll

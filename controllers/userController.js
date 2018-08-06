@@ -22,6 +22,7 @@ module.exports = {
       .catch(e => next(e));
   },
 
+  // Middleware function to handle the update of a users information in the db. Not used in app.
   update(req, res, next) {
     const { username } = req.body;
 
@@ -37,10 +38,5 @@ module.exports = {
       })
       .catch(e => next(e));
   },
-
-  showEditForm(req, res, next) {
-    
-  },
-
 
 };

@@ -1,10 +1,13 @@
+<!-- Main page after login. Allows users to choose a group to navigate to,
+create, update and delete groups. -->
+
 <%- include('../partials/header') %>
 
 <div>
   <h2>Groups:</h2>
     <ul>
       <% group.forEach((g) => { %>
-      <a href="/group/<%= g.id %>"><li>Group #: <%= g.id %> : <%= g.name %> : <%= g.description %></li></a>
+      <a href="/groups/<%= g.id %>"><li>Group #: <%= g.id %> : <%= g.name %> : <%= g.description %></li></a>
       <% }) %>
    </ul>
 </div>

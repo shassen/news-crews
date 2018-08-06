@@ -1,10 +1,12 @@
 // Require connection to database
 const db = require('../config/connection');
 
+// Create SQL queries to display and manipulate data in app
 function findAll() {
   return db.many(`
         SELECT *
-        FROM groups`);
+        FROM groups
+        ORDER BY id ASC`);
 }
 
 function findById(id) {
@@ -12,6 +14,14 @@ function findById(id) {
         SELECT *
         FROM groups
         WHERE id = $1`, id);
+}
+
+function findGroupComs(id) {
+  return db.many(`
+        SELECT *
+        FROM groups g
+        JOIN comments c ON g.id = c.group_id
+        WHERE g.id = $1`, id);
 }
 
 function findByGroupName(name) {
@@ -61,6 +71,7 @@ function destroy(name) {
 module.exports = {
   findAll,
   findById,
+  findGroupComs,
   findByGroupName,
   create,
   addUserToGroup,

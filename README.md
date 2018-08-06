@@ -35,4 +35,29 @@ This is a very rough sketch but I will be using Bulma to style this project. Mor
 
 ![screen shot 2018-08-03 at 9 57 04 am](https://user-images.githubusercontent.com/34017019/43646710-a266a806-9703-11e8-8f31-35e723162023.png)
 
+## Project Resources & Shoutouts:
+
+### People:
+1. @John Master - Thank you for all the awesome auth functions.
+2. @Jason Seminara - Thank you for all the help with route discussion and controller functions.
+
+### npm packages:
+1. bcryptjs v: 2.4.3
+2. body-parser v: 1.18.3
+3. bulma v: 0.7.1
+4. connect-flash v: 0.1.1
+5. dotenv v: 6.0.0
+6. ejs v: 2.6.1
+7. express v: 4.16.3
+8. express-session v: 1.15.6
+9. method-override v: 3.0.0
+10. morgan v: 1.9.0
+11. node-fetch v: 2.2.0
+12. passport v: 0.4.0
+13. passport-local v: 1.0.0
+14. pg-promise v: 8.4.5
+15. eslint v: 4.19.1 AIRBNB STYLEGUIDE
+16. nodemon v: 1.18.3
+
+
 

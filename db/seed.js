@@ -42,22 +42,8 @@ const commentSeedData = [
   },
 ];
 
-// const userGroupSeedData = [
-//   {
-//     user_id: 1,
-//     group_id: 1,
-//   },
-//   {
-//     user_id: 2,
-//     group_id: 2,
-//   },
-//   {
-//     user_id: 3,
-//     group_id: 3,
-//   },
-// ];
-
-
+// Initial seed for db. I referenced John Master's seed function from Quote-sta-gram to
+// successfully seed the db. Thanks John!
 async function seed() {
   // seed users
   const users = await Promise.all(userSeedData
@@ -70,22 +56,8 @@ async function seed() {
   console.log(groups);
   // seed comment
   const commentQueries = commentSeedData.map((c, index) => (
-    comment.save({ author: 'shawn', ...c })));
+    comment.save({ author: 'shawn', ...c, group_id: 1 })));
   const comments = await Promise.all(commentQueries);
   console.log(comments);
-  // // seed user_group table
-  // const userGroups = await Promise.all(userGroupSeedData.map(el => userGroups.save(el)));
-  // console.log(userGroups);
 }
 seed();
-
-// seed groups
-// const groups = await Promise.all(groupSeedData.map(group.save));
-
-// const articleSeedData = [
-//   {
-//     source: 'USA Today',
-//     url: 'https://www.usatoday.com/story/news/nation-now/2018/08/03/nasa-first-astronauts-spacex-boeing-ships/896846002/',
-//     urlimg: 'https://www.gannett-cdn.com/-mm-/84fa046072fc684226a657961ca7b138e72e3a87/c=0-53-1041-641/local/-/media/2018/08/03/Brevard/Brevard/636688945380427913-nasa-ccp-group-photo.jpg?width=3200&height=1680&fit=crop'
-//   },
-// ];

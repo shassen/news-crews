@@ -2,6 +2,8 @@
 const bcrypt = require('bcryptjs');
 const db = require('../config/connection');
 
+// Create SQL queries to display and manipulate data in app
+// Register function is from John Master's Auth lesson. Thank you John!
 function register(username, password) {
   return bcrypt.hash(password, 8)
     .then((hash) => {
@@ -43,6 +45,7 @@ function update(name) {
     WHERE id = $/id/ RETURNING *`, name);
 }
 
+// Login function is from John Master's Auth lesson.
 async function login(username, password) {
   try {
     const user = await findByUsername(username);

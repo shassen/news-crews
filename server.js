@@ -9,22 +9,17 @@ const passport       = require('passport');
 const session        = require('express-session');
 const flash          = require('connect-flash');
 
-
 // Require routers and controllers here
 const authRouter    = require('./routes/auth');
 const groupRouter   = require('./routes/group');
 const commentRouter = require('./routes/comments');
 const userRouter    = require('./routes/user');
-// const articleRouter = require('./routes/articles');
-
 
 // Create PORT variable to check for env or 3000 as default
 const PORT = process.env.PORT || 3000;
 
 // Initialize express
 const app = express();
-
-
 
 // Set the view engine, initialize ejs and join paths for alternative OS
 app.set('view engine', 'ejs');
@@ -46,19 +41,19 @@ app.use(session({
   saveUninitialized: false,
 }));
 
-
-// Initialize Flash
+// Initialize flash for error messages upon login
 app.use(flash());
 
-// Initialize body-parser
+// Initialize body-parser and method override for html methods PUT and DELETE
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 
-// TESTING LOGIN HACK HERE
+// Initialize passport to allow user logins and remember session.
 app.use(passport.initialize());
 app.use(passport.session());
 
+// TESTING LOGIN HACK HERE
 // const userDB = require('./models/user');
 // app.use((req, res, next) => {
 //   userDB.findByUsername()
@@ -67,20 +62,13 @@ app.use(passport.session());
 //     });
 // });
 
-// Set up ROUTES here
-
-// app.use('/auth', authRouter);
-// app.use('/newscrews', userRouter);
-// app.use('/groups', groupRouter);
+// Newscrews routes.
+app.use('/auth', authRouter);
+app.use('/newscrews', userRouter);
+app.use('/groups', groupRouter);
 app.use('/comments', commentRouter);
 
-
-// app.get('/', (req, res) => {
-//   res.send('Testing server...');
-// });
-
-
-// Set up listern on port provided or default 3000
+// Set up listener on port provided or default 3000 in some env mode.
 app.listen(PORT, () => {
   console.log(`Server is up and listening on port ${PORT} in ${app.get('env')} mode`);
 });

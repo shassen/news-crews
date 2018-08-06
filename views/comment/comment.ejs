@@ -1,29 +1,17 @@
+<!-- View that shows user comments within group and new comment form. -->
 
 <%- include('../partials/header') %>
+<%- include('../partials/comment_form') %>
 
 <div>
   <h2>Comments:</h2>
-      <% comment.forEach((c) => { %>
+      <% group.forEach((c) => { %>
       <h2>Posted by: <%= c.author %></h2>
       <p><%= c.content %></p>
-      <a><%= c.url %></a>
+      <a href="<%= c.url %>"><%= c.url %></a>
       <% }) %>
 </div>
 <br />
-
-<div>
-<form
-  method="POST"
-  action="/comments"
-  id="commentform">
-  
-  <textarea placeholder="create comment here" row="4" cols="30" form="commentform" name="content"></textarea><br />
-  <label for="url">Url:</label>
-  <input type="text" name="url" id="url">
-
-</form>
-</div>
-
 
 
 <%- include('../partials/foot') %>
