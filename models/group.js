@@ -15,11 +15,10 @@ function findById(id) {
 }
 
 function findByGroupName(name) {
-  return db.many(`
+  return db.one(`
         SELECT *
         FROM groups
-        WHERE name
-        LIKE "%$/name/%"`, name);
+        WHERE name = $1`, name);
 }
 
 function create(group) {
@@ -43,10 +42,20 @@ function removeUserFromGroup(userId, groupId) {
         `, [userId, groupId]);
 }
 
-function destroy(id) {
+function updateGroup(group) {
   return db.one(`
+        UPDATE groups
+          SET 
+            name = $/name/,
+            description = $/description/
+        WHERE id = $/id/
+        RETURNING *`, group);
+}
+
+function destroy(name) {
+  return db.none(`
         DELETE FROM groups
-        WHERE id = $1`, id);
+        WHERE name = $1`, name);
 }
 
 module.exports = {
@@ -56,5 +65,6 @@ module.exports = {
   create,
   addUserToGroup,
   removeUserFromGroup,
+  updateGroup,
   destroy,
 };

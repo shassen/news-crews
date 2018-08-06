@@ -40,7 +40,7 @@ function update(name) {
   return db.one(`
     UPDATE users
     SET username = $/username/
-    WHERE id = $/id/`, name);
+    WHERE id = $/id/ RETURNING *`, name);
 }
 
 async function login(username, password) {

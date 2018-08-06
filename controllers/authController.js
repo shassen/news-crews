@@ -1,12 +1,13 @@
-const passport = require('passport');
-const userDB   = require('../models/user');
+const passport       = require('passport');
+const userDB         = require('../models/user');
 
 function renderLogin(req, res) {
   res.render('auth/login', { errors: req.flash('error') });
 }
 
+
 const handleLogin = passport.authenticate('local', {
-  successRedirect: '/',
+  successRedirect: '/groups',
   failureRedirect: '/auth/login',
   failureFlash: 'invalid username and password',
 });

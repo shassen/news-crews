@@ -58,10 +58,14 @@ app.use(methodOverride('_method'));
 // TESTING LOGIN HACK HERE
 app.use(passport.initialize());
 app.use(passport.session());
+
 // const userDB = require('./models/user');
 // app.use((req, res, next) => {
-//   userDB.findByUsername(req.user.username)
-// })
+//   userDB.findByUsername()
+//     .then((user) => {
+//       req.login(user, () => next());
+//     });
+// });
 
 // Set up ROUTES here
 

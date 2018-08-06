@@ -27,12 +27,12 @@ const send400 = (err, req, res, next) => {
 };
 
 userRouter.route('/:id')
-  .get(userController.showEditForm)
+  .get(userController.getOne, showJSON)
   .put(userController.update);
-
+  // userController.showEditForm
 userRouter.route('/')
   .post(userController.index, showJSON)
-  .get(userController.index, showJSON);
+  .get(userController.index, viewController.showUser, viewController.show404);
 
 userRouter.use(handle404);
 // userRouter.use(send400);

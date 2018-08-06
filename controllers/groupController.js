@@ -4,9 +4,9 @@ module.exports = {
 
   createNewGroup(req, res, next) {
     const g = req.body;
-    db.save({ ...g, created_by: req.user.id })
+    db.create({ ...g })
       .then((group) => {
-        res.redirect('/group');
+        res.redirect('/groups');
       })
       .catch(e => next(e));
   },
@@ -21,8 +21,8 @@ module.exports = {
   },
 
   getOne(req, res, next) {
-    const groupName = req.body;
-    db.findByGroupName(groupName)
+    const groupId = req.params.id;
+    db.findById(groupId)
       .then((group) => {
         res.locals.group = group;
         next();
@@ -30,19 +30,24 @@ module.exports = {
       .catch(e => next(e));
   },
 
-  // create(req, res, next) {
-    
-  // },
+  getGroup(req, res, next) {
+    const { name } = req.body;
+    db.findByGroupName(name)
+      .then((group) => {
+        res.locals.group = group;
+        next();
+      })
+      .catch(e => next(e));
+  },
 
   update(req, res, next) {
-    const { name, description } = req.body;
-
+    const { id, name, description } = req.body;
     const modifiedGroup = {
-      id: req.params.id,
+      id,
       name,
-      description
+      description,
     };
-    db.update(modifiedGroup)
+    db.updateGroup(modifiedGroup)
       .then((group) => {
         res.locals.group = group;
         next();
@@ -51,19 +56,12 @@ module.exports = {
   },
 
   destroy(req, res, next) {
-    db.destroy(req.params.id)
+    const { name } = req.body;
+    db.destroy(name)
       .then(() => {
         next();
       })
       .catch(e => next(e));
-  },
-
-  showNewForm(req, res, next) {
-    
-  },
-
-  showEditForm(req, res, next) {
-    
   },
 
 };

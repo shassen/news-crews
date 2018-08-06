@@ -4,9 +4,9 @@ const db = require('../models/comment');
 module.exports = {
 
   createNewComment(req, res, next) {
-    db.save({ ...req.body, })
+    db.save({ ...req.body })
       .then((comment) => {
-        res.redirect('/...');
+        res.redirect('/');
       })
       .catch(e => next(e));
   },
@@ -15,7 +15,6 @@ module.exports = {
     db.findAll()
       .then((comments) => {
         res.locals.comments = comments;
-        console.log(res.locals.comments);
         next();
       })
       .catch(e => next(e));
@@ -50,12 +49,4 @@ module.exports = {
       .catch(e => next(e));
   },
 
-  showNewForm(req, res, next) {
-    
-  },
-
-  showEditForm(req, res, next) {
-
-  },
-
-}
+};

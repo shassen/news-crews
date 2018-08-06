@@ -42,6 +42,21 @@ const commentSeedData = [
   },
 ];
 
+// const userGroupSeedData = [
+//   {
+//     user_id: 1,
+//     group_id: 1,
+//   },
+//   {
+//     user_id: 2,
+//     group_id: 2,
+//   },
+//   {
+//     user_id: 3,
+//     group_id: 3,
+//   },
+// ];
+
 
 async function seed() {
   // seed users
@@ -58,6 +73,9 @@ async function seed() {
     comment.save({ author: 'shawn', ...c })));
   const comments = await Promise.all(commentQueries);
   console.log(comments);
+  // // seed user_group table
+  // const userGroups = await Promise.all(userGroupSeedData.map(el => userGroups.save(el)));
+  // console.log(userGroups);
 }
 seed();
 

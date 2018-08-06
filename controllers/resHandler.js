@@ -1,19 +1,6 @@
 
 module.exports = {
 
-  // showAll(req, res) {
-  //   res.format({
-  //     html() {
-  //       res.render('', {
-  //         name: req.query.name });
-  //     },
-
-  //     json() {
-  //       res.json(res.locals.data);
-  //     },
-  //   });
-  // },
-
   show404(err, req, res, next) {
     res.sendStatus(404);
   },
@@ -22,9 +9,36 @@ module.exports = {
   },
 
   showComments(req, res) {
-    res.render('partials/comment', {
+    res.render('comment/comment', {
       comment: res.locals.comments,
     });
   },
 
+  showUser(req, res) {
+    res.render('user/user', {
+      user: res.locals.users,
+    });
+  },
+
+  showGroups(req, res) {
+    res.render('group/group', {
+      group: res.locals.group,
+    });
+  },
+
+  showAddGroupForm(req, res) {
+    res.redirect('group/group');
+  },
+
+  showEditGroupForm(req, res) {
+    res.render('group/group_edit');
+  },
+
+  handleGroupDelete(req, res) {
+    res.redirect('/groups');
+  },
+
+  handleGroupUpdate(req, res) {
+    res.redirect('/groups');
+  },
 };
