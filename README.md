@@ -1,5 +1,5 @@
 
-# News Crews (name not final)
+# News Crews
 
 The News Crews app is for consumers who enjoy good conversation while digesting their daily dose of news. 
 
@@ -20,6 +20,8 @@ Thats it!
 If you wish to stick around and look through some of the early planning for this app, see the images and details below regarding db structure, user stories, wireframes, etc.
 
 Thanks for visiting and feel free to help or provide feedback if you feel so inclined.
+
+## Video Walkthrough Link: https://youtu.be/dz9csj4FOo8
 
 ## User Stories Idea 2 (social news app):
 - As a user of ... I want to read news articles online
@@ -53,7 +55,7 @@ This is a very rough sketch but I will be using Bulma to style this project. Mor
 
 ### People:
 1. @John Master - Thank you for all the awesome auth functions.
-2. @Jason Seminara - Thank you for all the help with route discussion and controller functions.
+2. @Jason Seminara - Thank you for all the help with route discussion and controller functions as well as Quote-sta-gram which was heavily referenced in the making of this app.
 
 ### npm packages:
 1. bcryptjs v: 2.4.3
