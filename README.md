@@ -54,8 +54,10 @@ This is a very rough sketch but I will be using Bulma to style this project. Mor
 ## Project Resources & Shoutouts:
 
 ### People:
-1. @John Master - Thank you for all the awesome auth functions.
+1. @John Master - Thank you for all the awesome authorization functions.
 2. @Jason Seminara - Thank you for all the help with route discussion and controller functions as well as Quote-sta-gram which was heavily referenced in the making of this app.
+3. @Drake Talley - Thank you for the fetch functions, I really wish I was able to implement them here.
+4. @Jon Zachary AKA JayZ - Thank you for algorithm practice during unit 2, especially the express algo app we created while at convene. 
 
 ### npm packages:
 1. bcryptjs v: 2.4.3

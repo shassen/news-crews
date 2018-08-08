@@ -1,5 +1,6 @@
 // Fetch req initially created to pull news articles for project.
 // Considering time constraints, this function wasn't implemented.
+// Thank you, @Drake Talley for supplying this in our fetch lab.
 
 const fetch = require('node-fetch');
 require('dotenv').config();

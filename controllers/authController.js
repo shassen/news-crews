@@ -32,7 +32,7 @@ function handleRegister(req, res, next) {
   // Register new user
   userDB.register(username, password)
     .then((newUser) => {
-      req.login(newUser, e => (e ? next(e) : res.redirect('/')));
+      req.login(newUser, e => (e ? next(e) : res.redirect('/auth/login')));
     })
     .catch((e) => {
       req.flash('error', 'username unavailable');
