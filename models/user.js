@@ -6,15 +6,13 @@ const db     = require('../config/connection');
 // Register function is from John Master's Auth lesson. Thank you John!
 function register(username, password) {
   return bcrypt.hash(password, 8)
-    .then((hash) => {
-      return db.one(`
+    .then(hash => db.one(`
         INSERT INTO users (username, password_digest)
         VALUES ($/username/, $/password_digest/)
         RETURNING *`, {
-        username,
-        password_digest: hash,
-      });
-    });
+      username,
+      password_digest: hash,
+    }));
 }
 
 function findAll() {

@@ -20,15 +20,15 @@ const userSeedData = [
 
 const groupSeedData = [
   {
-    name: 'test group',
+    name:        'test group',
     description: 'this is a group created for testing',
   },
   {
-    name: 'shawns group',
+    name:        'shawns group',
     description: 'Tech news please',
   },
   {
-    name: 'user1 group',
+    name:        'user1 group',
     description: 'User1\'s world news group',
   },
 ];
@@ -37,7 +37,7 @@ const groupSeedData = [
 const commentSeedData = [
   {
     content: 'This article is fantastic!',
-    url: 'https://www.usatoday.com/story/news/nation-now/2018/08/03/nasa-first-astronauts-spacex-boeing-ships/896846002/',
+    url:     'https://www.usatoday.com/story/news/nation-now/2018/08/03/nasa-first-astronauts-spacex-boeing-ships/896846002/',
   },
 ];
 

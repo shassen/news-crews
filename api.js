@@ -4,6 +4,7 @@
 
 const fetch = require('node-fetch');
 require('dotenv').config();
+
 const apiKey = process.env.NEWS_API_KEY;
 
 function test() {

@@ -36,8 +36,8 @@ app.use(logger('dev'));
 
 // Set up session below
 app.use(session({
-  secret: 'newscrews-secret',
-  resave: false,
+  secret:            'newscrews-secret',
+  resave:            false,
   saveUninitialized: false,
 }));
 

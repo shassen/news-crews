@@ -37,7 +37,9 @@ module.exports = {
   create(req, res, next) {
     const { groupId } = req.params.id;
     const { author, content, url } = req.body;
-    db.save({ author, content, url, group_id: groupId })
+    db.save({
+      author, content, url, group_id: groupId,
+    })
       .then((comment) => {
         res.locals.comments = comment;
         next();

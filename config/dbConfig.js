@@ -5,7 +5,7 @@ from a URL source as practice. However, the database is on my local machine
 */
 
 module.exports = {
-  host: process.env.DB_HOST || 'localhost',
-  port: process.env.DB_PORT || 5432,
+  host:     process.env.DB_HOST || 'localhost',
+  port:     process.env.DB_PORT || 5432,
   database: process.env.DB_NAME || 'newscrews_db',
 };
