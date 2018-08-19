@@ -15,7 +15,7 @@ function renderLogin(req, res) {
 const handleLogin = passport.authenticate('local', {
   successRedirect: '/groups',
   failureRedirect: '/auth/login',
-  failureFlash: 'invalid username and password',
+  failureFlash:    'invalid username and password',
 });
 
 // Middleware function to load the registration page
