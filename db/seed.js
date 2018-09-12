@@ -44,14 +44,11 @@ const commentSeedData = [
 // Initial seed for db. I referenced John Master's seed function from Quote-sta-gram to
 // successfully seed the db. Thanks John!
 async function seed() {
-  // seed users
   const users = await Promise.all(userSeedData
     .map(({ username, password }) => user.register(username, password)));
-  // seed groups
   const groupQueries = groupSeedData.map((g, index) => (
     group.create({ ...g, created_by: users[index].username })));
   const groups = await Promise.all(groupQueries);
-  // seed comment
   const commentQueries = commentSeedData.map((c, index) => (
     comment.save({ author: 'shawn', ...c, group_id: 1 })));
   const comments = await Promise.all(commentQueries);
