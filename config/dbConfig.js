@@ -4,8 +4,8 @@ For this project I will include an object that could receive DB info
 from a URL source as practice. However, the database is on my local machine
 */
 
-module.exports = {
-  host:     process.env.DB_HOST || 'localhost',
-  port:     process.env.DB_PORT || 5432,
-  database: process.env.DATABASE_URL || 'newscrews_db',
+module.exports = process.env.DATABASE_URL || {
+  host:     'localhost',
+  port:     5432,
+  database: 'newscrews_db',
 };

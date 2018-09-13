@@ -1,4 +1,3 @@
-// Require models for project
 const user    = require('../models/user');
 const group   = require('../models/group');
 const comment = require('../models/comment');
